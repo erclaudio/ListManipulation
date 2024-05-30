@@ -66,6 +66,7 @@ namespace ListManipulation
 */
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -76,9 +77,14 @@ namespace ListManipulation
     {
         static void Main(string[] args)
         {
-            List<Persona> persone = new List<Persona>();
+            List<Persona> personelist = new List<Persona>();
+            List<Informatici> informaticilist = new List<Informatici>();
+            List<Professori> professorilist = new List<Professori>();
+            List<Elettricisti> eletriccistilist = new List<Elettricisti>();
+            List<Studente> studentilist = new List<Studente>();
 
-            for (int i = 0; i < 8; i++)
+
+            for (int i = 0; i < 3; i++)
             {
                 Console.WriteLine("Inserire Nome");
                 string nome = Console.ReadLine();
@@ -103,7 +109,8 @@ namespace ListManipulation
                         Console.WriteLine("Inserire Matricola");
                         studenteIns.Matricola = int.Parse(Console.ReadLine());
 
-                        persone.Add(studenteIns);
+                        personelist.Add(studenteIns);
+                        studentilist.Add(studenteIns);
                         break;
 
                     case 1:
@@ -113,7 +120,8 @@ namespace ListManipulation
                         Console.WriteLine("inserire Linguaggio di Programmazione");
                         informaticiIns.LinguaggioProg = Console.ReadLine();
 
-                        persone.Add(informaticiIns);
+                        personelist.Add(informaticiIns);
+                        informaticilist.Add(informaticiIns);
                         break;
 
                     case 2:
@@ -123,7 +131,8 @@ namespace ListManipulation
                         Console.WriteLine("inserire Posto di Lavoro");
                         elettricistiIns.SitoLavoro = Console.ReadLine();
 
-                        persone.Add(elettricistiIns);
+                        personelist.Add(elettricistiIns);
+                        eletriccistilist.Add(elettricistiIns);
                         break;
 
                     case 3:
@@ -133,10 +142,19 @@ namespace ListManipulation
                         Console.WriteLine("inserire Materia d'insegnamento");
                         professoriIns.MateriaInseg = Console.ReadLine();
 
-                        persone.Add(professoriIns);
+                        personelist.Add(professoriIns);
+                        professorilist.Add(professoriIns);
                         break;
                 }
             }
+            Console.WriteLine("In totale ci sono: {0} persone di cui:" +
+            "\nStudenti: {1}" +
+            "\nInformatici: {2}" +
+            "\nElettricisti: {3}" +
+            "\nProfessori: {4}",
+            personelist.Count, studentilist.Count, informaticilist.Count, eletriccistilist.Count, professorilist.Count);
+
+
             Console.WriteLine("Quale gruppo di persone vuoi estrarre?" +
                         "\n0- studente " +
                         "\n1- informatico " +
@@ -148,48 +166,50 @@ namespace ListManipulation
 
             switch (scelta)
             {
+
                 case 0:
-                    foreach (var studente in persone)
+                    foreach (var studente in personelist)
                     {
-                        if (studente is Studente && persone.Contains(studente))
-                        {
-                            Studente obj = (Studente)studente;
-                            Console.WriteLine(obj.ToString());
+                        
+                        bool contains = studentilist.Contains(studente);
+                        if (contains)
+                        {                           
+                            Console.WriteLine(studente.ToString());
                         }
                     }
                     break;
                 case 1:
-                    foreach (var informatico in persone)
+                    foreach (var informatico in personelist)
                     {
-                        if (informatico is Informatici && persone.Contains(informatico))
+                        bool contains = informaticilist.Contains(informatico);
+                        if (contains)
                         {
-                            Informatici obj = (Informatici)informatico;
-                            Console.WriteLine(obj.ToString());
+                            Console.WriteLine(informatico.ToString());
                         }
                     }
                     break;
                 case 2:
-                    foreach (var elettricista in persone)
+                    foreach (var elettricista in personelist)
                     {
-                        if (elettricista is Elettricisti && persone.Contains(elettricista))
+                        bool contains = eletriccistilist.Contains(elettricista);
+                        if (contains)
                         {
-                            Elettricisti obj = (Elettricisti)elettricista;
-                            Console.WriteLine(obj.ToString());
+                            Console.WriteLine(elettricista.ToString());
                         }
                     }
                     break;
                 case 3:
-                    foreach (var professore in persone)
+                    foreach (var professore in personelist)
                     {
-                        if (professore is Professori && persone.Contains(professore))
+                        bool contains = professorilist.Contains(professore);
+                        if (contains)
                         {
-                            Professori obj = (Professori)professore;
-                            Console.WriteLine(obj.ToString());
+                            Console.WriteLine(professore.ToString());
                         }
                     }
                     break;
                 case 4:
-                    foreach (var persona in persone)
+                    foreach (var persona in personelist)
                     {                        
                         Console.WriteLine(persona.ToString());                        
                     }

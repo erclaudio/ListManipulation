@@ -16,7 +16,7 @@ namespace ListManipulation
 
         public override string ToString()
         {
-            return base.ToString() + $"Materia insegnata: {MateriaInseg}";
+            return base.ToString() + $", Materia insegnata: {MateriaInseg}";
         }
     }
 }

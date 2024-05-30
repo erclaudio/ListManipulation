@@ -15,7 +15,7 @@ namespace ListManipulation
 
         public override string ToString()
         {
-            return base.ToString() + $"Posto di lavoro: {SitoLavoro}";
+            return base.ToString() + $", Posto di lavoro: {SitoLavoro}";
         }
     }
 }

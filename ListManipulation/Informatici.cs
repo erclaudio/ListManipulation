@@ -16,7 +16,7 @@ namespace ListManipulation
 
         public override string ToString()
         {
-            return base.ToString() + $"Linguaggio di programmazione: {LinguaggioProg}";
+            return base.ToString() + $", Linguaggio di programmazione: {LinguaggioProg}";
         }
     }
 }
